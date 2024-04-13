@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Master!</title>
+
+    <link rel="stylesheet" media="all" href="css/main.css">
+</head>
+<body>
+
+<header class="header">
+    <h1 class="logo">Quiz Master</h1>
+</header>
+
+<section class="page">
+
+    <div class="create-page">
+
+        <div class="create-top">
+            <video autoplay id="video-player" class='video-player' src='//d.pr/v/exjG+'></video>
+
+            <div class="create-actions">
+                <div id="time">00:00:00</div>
+                <button id="add-question">Add question</button>
+                <button id="play">Play</button>
+                <button id="pause">Pause</button>
+            </div>
+
+            <form id="add-question-form" class="add-question-form" style="display: none;">
+                <div>
+                    <input name="question-input" id="question-input" type="text" placeholder="What is the question?">
+                </div>
+                <div>
+                    <input name="answer1" id="answer1" type="text" placeholder="Answer 1">
+                </div>
+                <div>
+                    <input name="answer2" id="answer2" type="text" placeholder="Answer 2">
+                </div>
+                <div>
+                    <input name="answer3" id="answer3" type="text" placeholder="Answer 3">
+                </div>
+                <div>
+                    <input name="answer4" id="answer4" type="text" placeholder="Answer 4">
+                </div>
+                <div class="select-correct">
+                    <label for="answer-select">Correct answer:</label>
+                    <select name="answer" id="answer-select">
+                        <option value="" disabled selected>Select the correct answer</option>
+                        <option value="1">Question 1</option>
+                        <option value="2">Question 2</option>
+                        <option value="3">Question 3</option>
+                        <option value="4">Question 4</option>
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button id="save-form">Save</button>
+                    <button id="cancel-form">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="create-bottom">
+            <table id="questions" class="questions">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Question</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <div class="bottom-buttons">
+                <a id="back-btn" class="back-btn" href="./index.html" >Back to catalog</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src='node_modules/lodash/lodash.min.js'></script>
+<script src="js/store.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/create.js"></script>
+<script type="text/javascript">
+
+    var create = new Create();
+    create.init($('.page'));
+
+    create.addQuestion({id: 'row' + (new Date().getTime() - 99), question: 'I need your clothes, your boots and your...', time: '00:00:07'});
+    create.addQuestion({id: 'row' + (new Date().getTime() - 100), question: 'John wants T-800 to', time: '00:00:30'});
+    create.addQuestion({id: 'row' + (new Date().getTime() - 101), question: 'What is T-800 going to do?', time: '00:00:45'});
+
+    $(window).keypress(function(e) {
+        if (e.keyCode === 0 || e.keyCode === 32 || e.keyCode === 461 || e.keyCode === 8) {
+            e.preventDefault();
+            window.location.href = './index.html';
+        }
+    });
+
+</script>
+</body>
+</html>
+
+
+
+
